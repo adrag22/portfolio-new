@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Raghunath — Product Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#080810;--surface:#10101e;--surface2:#16162a;--border:#1e1e38;--accent:#6366f1;--accent-glow:rgba(99,102,241,0.18);--cyan:#22d3ee;--amber:#f59e0b;--text:#f1f5f9;--muted:#64748b;--muted2:#94a3b8;--font:'Space Grotesk',sans-serif;--mono:'Space Mono',monospace}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;background:rgba(8,8,16,0.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-size:1rem;font-weight:700;letter-spacing:-0.02em}.nav-logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:2rem;align-items:center}
+    .nav-links a{font-size:0.85rem;color:var(--muted2);font-weight:500;transition:color .2s}.nav-links a:hover{color:var(--text)}
+    .nav-cta{background:var(--accent);color:#fff;padding:0.45rem 1.1rem;border-radius:6px;font-size:0.82rem;font-weight:600;transition:opacity .2s}.nav-cta:hover{opacity:0.88;color:#fff}
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:7rem 2.5rem 5rem;max-width:1200px;margin:0 auto;position:relative}
+    .hero-tag{display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent-glow);border:1px solid rgba(99,102,241,0.3);color:#a5b4fc;font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:100px;margin-bottom:1.8rem;width:fit-content}
+    .hero-tag::before{content:'●';font-size:0.6rem;color:var(--cyan)}
+    h1{font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:1.4rem}
+    h1 em{font-style:normal;color:var(--accent)}h1 .cyan{color:var(--cyan)}
+    .hero-sub{font-size:clamp(1rem,1.8vw,1.2rem);color:var(--muted2);max-width:620px;line-height:1.7;margin-bottom:2.4rem}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-primary{background:var(--accent);color:#fff;padding:0.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:0.92rem;transition:opacity .2s,transform .2s}.btn-primary:hover{opacity:0.9;transform:translateY(-1px);color:#fff}
+    .btn-ghost{border:1px solid var(--border);color:var(--muted2);padding:0.75rem 1.8rem;border-radius:8px;font-weight:500;font-size:0.92rem;transition:border-color .2s,color .2s}.btn-ghost:hover{border-color:var(--accent);color:var(--text)}
+    .hero-bg-glow{position:absolute;top:20%;right:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,0.08) 0%,transparent 70%);pointer-events:none}
+    section{padding:5rem 2.5rem;max-width:1200px;margin:0 auto}
+    .section-label{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem}
+    h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-0.025em;margin-bottom:1rem}
+    .section-divider{border:none;border-top:1px solid var(--border);max-width:1200px;margin:0 auto}
+    #metrics{background:var(--surface);max-width:100%;padding:4rem 2.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .metrics-inner{max-width:1200px;margin:0 auto}
+    .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;margin-top:2.5rem}
+    .metric-item{padding:2rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}.metric-item:last-child{border-right:none}
+    .metric-value{font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.04em;line-height:1;background:linear-gradient(135deg,var(--text),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.4rem}
+    .metric-item:nth-child(2) .metric-value{background:linear-gradient(135deg,var(--text),var(--cyan));-webkit-background-clip:text;background-clip:text}
+    .metric-item:nth-child(3) .metric-value{background:linear-gradient(135deg,var(--text),var(--amber));-webkit-background-clip:text;background-clip:text}
+    .metric-label{font-size:0.82rem;color:var(--muted);font-weight:500}
+    #work{padding-top:5rem}.work-intro{max-width:560px;margin-bottom:3.5rem}
+    .case-studies{display:flex;flex-direction:column;gap:3rem}
+    .case-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .25s}.case-card:hover{border-color:rgba(99,102,241,0.35)}
+    .case-card-inner{display:grid;grid-template-columns:1fr 1fr}
+    .case-card-inner.reverse{direction:rtl}.case-card-inner.reverse>*{direction:ltr}
+    .case-content{padding:2.5rem}
+    .case-tag{display:inline-block;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.7rem;border-radius:4px;margin-bottom:1rem}
+    .tag-hf{background:rgba(99,102,241,0.15);color:#a5b4fc}.tag-rakuten{background:rgba(239,68,68,0.12);color:#fca5a5}.tag-clear{background:rgba(34,211,238,0.12);color:#67e8f9}.tag-goto{background:rgba(245,158,11,0.12);color:#fcd34d}
+    .case-content h3{font-size:1.35rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem;line-height:1.3}
+    .case-company{font-size:0.8rem;color:var(--muted);margin-bottom:1.2rem}
+    .case-section-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.35rem;margin-top:1rem}
+    .case-text{font-size:0.9rem;color:var(--muted2);line-height:1.65}
+    .case-outcomes{margin-top:1.2rem;display:flex;flex-direction:column;gap:0.5rem}
+    .outcome-pill{display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:var(--text);font-weight:500}
+    .outcome-pill::before{content:'↑';color:#4ade80;font-weight:700;font-size:0.8rem}.outcome-pill.down::before{content:'↓'}
+    .case-reflection{margin-top:1.2rem;padding:0.9rem 1rem;background:rgba(99,102,241,0.06);border-left:3px solid var(--accent);border-radius:0 6px 6px 0}
+    .case-reflection p{font-size:0.82rem;color:var(--muted2);line-height:1.6;font-style:italic}
+    .case-mockup{background:var(--surface2);border-left:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;min-height:380px;overflow:hidden}
+    .case-card-inner.reverse .case-mockup{border-left:none;border-right:1px solid var(--border)}
+    .mockup-browser{width:100%;background:#0d0d1a;border-radius:10px;border:1px solid #1e1e38;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+    .browser-bar{background:#13132a;padding:0.6rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid #1e1e38}
+    .browser-dot{width:8px;height:8px;border-radius:50%}.browser-dot.r{background:#ef4444}.browser-dot.y{background:#f59e0b}.browser-dot.g{background:#22c55e}
+    .browser-url{flex:1;background:#0a0a18;border-radius:4px;padding:0.22rem 0.7rem;font-size:0.68rem;color:var(--muted);font-family:var(--mono);margin-left:0.5rem}
+    .browser-body{padding:1.2rem}
+    .ss-mockup-header{font-size:0.65rem;font-weight:700;color:#a78bfa;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.8rem}
+    .ss-metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:0.6rem}
+    .ss-metric{background:#13132a;border-radius:6px;padding:0.5rem}.ss-metric-val{font-size:0.9rem;font-weight:700;color:#22d3ee}.ss-metric-lbl{font-size:0.55rem;color:var(--muted)}
+    .ss-alerts{display:flex;flex-direction:column;gap:0.3rem}
+    .ss-alert{background:#13132a;border-radius:4px;padding:0.35rem 0.5rem;display:flex;align-items:center;gap:0.4rem;font-size:0.58rem;color:var(--muted2)}
+    .ss-alert-dot{width:5px;height:5px;border-radius:50%;background:#22c55e}.ss-alert-dot.warn{background:#f59e0b}
+    .fraud-header{font-size:0.65rem;font-weight:700;color:#f87171;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.8rem}
+    .fraud-score-row{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem}
+    .fraud-score-val{font-size:1.3rem;font-weight:700;color:#4ade80}.fraud-score-lbl{font-size:0.6rem;color:var(--muted)}
+    .fraud-bars{display:flex;flex-direction:column;gap:0.35rem}
+    .fraud-bar-row{display:flex;align-items:center;gap:0.5rem;font-size:0.6rem;color:var(--muted2)}
+    .fraud-bar-bg{flex:1;height:5px;background:#1e1e38;border-radius:3px;overflow:hidden}.fraud-bar-fill{height:100%;border-radius:3px}
+    .fraud-blocked{display:flex;justify-content:space-between;align-items:center;margin-top:0.6rem;background:rgba(239,68,68,0.08);border-radius:4px;padding:0.4rem 0.5rem}
+    .fraud-blocked span{font-size:0.62rem;color:var(--muted2)}.fraud-blocked strong{color:#f87171;font-size:0.8rem}
+    .mf-header{font-size:0.65rem;font-weight:700;color:#67e8f9;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.8rem}
+    .mf-aum{margin-bottom:0.8rem}.mf-aum-val{font-size:1.4rem;font-weight:700;color:var(--text)}.mf-aum-change{font-size:0.65rem;color:#4ade80;margin-left:0.4rem}.mf-aum-lbl{font-size:0.6rem;color:var(--muted)}
+    .mf-funds{display:flex;flex-direction:column;gap:0.35rem}
+    .mf-fund-row{background:#13132a;border-radius:4px;padding:0.4rem 0.5rem;display:flex;justify-content:space-between;align-items:center}
+    .mf-fund-name{font-size:0.6rem;color:var(--muted2)}.mf-fund-ret{font-size:0.65rem;font-weight:700;color:#4ade80}
+    .mf-growth{margin-top:0.6rem;background:rgba(34,211,238,0.07);border-radius:4px;padding:0.4rem 0.5rem;text-align:center}
+    .mf-growth span{font-size:0.6rem;color:#67e8f9}.mf-growth strong{color:#22d3ee}
+    .ap-header{font-size:0.65rem;font-weight:700;color:#fcd34d;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.8rem}
+    .ap-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.6rem}
+    .ap-stat{background:#13132a;border-radius:6px;padding:0.5rem}.ap-stat-val{font-size:0.95rem;font-weight:700;color:#fbbf24}.ap-stat-lbl{font-size:0.55rem;color:var(--muted)}
+    .ap-invoice{display:flex;flex-direction:column;gap:0.3rem}
+    .ap-inv-row{background:#13132a;border-radius:4px;padding:0.35rem 0.5rem;display:flex;align-items:center;justify-content:space-between}
+    .ap-inv-name{font-size:0.6rem;color:var(--muted2)}.ap-inv-status{font-size:0.55rem;padding:0.15rem 0.4rem;border-radius:3px}
+    .ap-inv-status.approved{background:rgba(74,222,128,0.12);color:#4ade80}.ap-inv-status.processing{background:rgba(251,191,36,0.12);color:#fbbf24}
+    .mockup-link{margin-top:1rem;font-size:0.72rem;color:var(--accent);display:flex;align-items:center;gap:0.4rem;font-weight:600;transition:gap .2s}.mockup-link:hover{gap:0.7rem}.mockup-link::after{content:'→'}
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .skill-group{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.6rem}
+    .skill-group h4{font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+    .skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+    .skill-tag{background:var(--surface2);border:1px solid var(--border);color:var(--muted2);font-size:0.78rem;padding:0.3rem 0.7rem;border-radius:5px;font-weight:500}
+    .timeline{position:relative;margin-top:2.5rem;padding-left:1.5rem}
+    .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
+    .timeline-item{position:relative;padding:0 0 2.5rem 2rem}
+    .timeline-item::before{content:'';position:absolute;left:-0.31rem;top:0.3rem;width:9px;height:9px;border-radius:50%;border:2px solid var(--accent);background:var(--bg)}
+    .timeline-period{font-family:var(--mono);font-size:0.7rem;color:var(--muted);margin-bottom:0.3rem}
+    .timeline-role{font-size:1.05rem;font-weight:700;margin-bottom:0.15rem}
+    .timeline-company{font-size:0.85rem;color:var(--accent);font-weight:500;margin-bottom:0.6rem}
+    .timeline-desc{font-size:0.85rem;color:var(--muted2);line-height:1.65}
+    #contact{background:var(--surface);max-width:100%;border-top:1px solid var(--border);padding:5rem 2.5rem;text-align:center}
+    .contact-inner{max-width:600px;margin:0 auto}.contact-inner h2{margin-bottom:1rem}.contact-inner p{color:var(--muted2);margin-bottom:2rem;font-size:1rem}
+    .contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .contact-link-pill{display:flex;align-items:center;gap:0.5rem;border:1px solid var(--border);padding:0.65rem 1.4rem;border-radius:8px;font-size:0.88rem;font-weight:500;transition:border-color .2s,color .2s;color:var(--muted2)}.contact-link-pill:hover{border-color:var(--accent);color:var(--text)}
+    footer{text-align:center;padding:1.8rem;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border);font-family:var(--mono)}
+    @media(max-width:768px){nav{padding:1rem 1.2rem}.nav-links{display:none}section{padding:3.5rem 1.2rem}#hero{padding:6rem 1.2rem 4rem}.case-card-inner{grid-template-columns:1fr}.case-card-inner.reverse{direction:ltr}.case-mockup{border-left:none;border-top:1px solid var(--border);min-height:260px}.metric-item{border-right:none}.metrics-grid{grid-template-columns:1fr 1fr}}
+    .sparkline{stroke:#6366f1;stroke-width:2;fill:none}.sparkline-area{fill:url(#sparkGrad);stroke:none}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Aditya<span>.</span></div>
+  <div class="nav-links">
+    <a href="#work">Work</a><a href="#skills">Skills</a><a href="#timeline">Experience</a>
+    <a href="https://www.linkedin.com/in/aditya-raghunath-79949b23/" target="_blank" class="nav-cta">LinkedIn →</a>
+  </div>
+</nav>
+<div style="max-width:1200px;margin:0 auto;position:relative;">
+  <section id="hero">
+    <div class="hero-tag">Open to Senior PM / Head of Product Roles</div>
+    <h1>I build AI systems<br/>that <em>protect revenue</em><br/>at <span class="cyan">scale.</span></h1>
+    <p class="hero-sub">Strategic Technical PM with 10+ years across AI/ML, FinTech &amp; B2C platforms. €100M in compliance risk avoided. €4M+ in fraud losses cut. $17M/yr in cloud savings unlocked.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">See my work</a>
+      <a href="https://www.linkedin.com/in/aditya-raghunath-79949b23/" target="_blank" class="btn-ghost">Connect on LinkedIn</a>
+    </div>
+    <div class="hero-bg-glow"></div>
+  </section>
+</div>
+<div id="metrics">
+  <div class="metrics-inner">
+    <div class="section-label">Impact at a glance</div>
+    <div class="metrics-grid">
+      <div class="metric-item"><div class="metric-value">€100M</div><div class="metric-label">Compliance penalties avoided via ML-driven fraud controls</div></div>
+      <div class="metric-item"><div class="metric-value">€4M+</div><div class="metric-label">Annual fraud losses eliminated through predictive models</div></div>
+      <div class="metric-item"><div class="metric-value">$17M</div><div class="metric-label">Annual savings from cloud PaaS transformation at Rakuten</div></div>
+      <div class="metric-item"><div class="metric-value">6×</div><div class="metric-label">User growth &amp; 5× AUM growth in 15 months at Clear</div></div>
+      <div class="metric-item" style="border-right:none;"><div class="metric-value">10+</div><div class="metric-label">Years across AI, FinTech, B2C &amp; platform products</div></div>
+    </div>
+  </div>
+</div>
+<section id="work">
+  <div class="section-label">Case Studies</div>
+  <h2>Where I've made bets</h2>
+  <div class="work-intro"><p style="color:var(--muted2);font-size:0.95rem;line-height:1.7;">Four deep dives into how I think — the problem, the bet, how I drove it, and what I'd do differently.</p></div>
+  <div class="case-studies">
+    <div class="case-card">
+      <div class="case-card-inner">
+        <div class="case-content">
+          <div class="case-tag tag-hf">HelloFresh · 2023–Present</div>
+          <h3>Stopping €100M in Compliance Risk with ML Fraud Controls</h3>
+          <div class="case-company">Product Lead — ML &amp; GenAI · Global</div>
+          <div class="case-section-label">The Problem</div>
+          <p class="case-text">Account Takeover attacks were costing €3M/year and creating serious regulatory exposure. Simultaneously, compensation fraud and a novel payment fraud pattern were draining millions—yet existing controls flagged &lt;1% of malicious payments.</p>
+          <div class="case-section-label">The Bet</div>
+          <p class="case-text">Build a suite of ML-driven verification and detection models distinguishing bad actors from legitimate users at sub-1% false positive rates—at global scale, across multiple fraud vectors simultaneously.</p>
+          <div class="case-section-label">How I Drove It</div>
+          <p class="case-text">Led cross-functional squads across three parallel workstreams: ATO detection, compensation fraud automation, and payment fraud blocking. Established model governance and monitoring from day one.</p>
+          <div class="case-outcomes">
+            <div class="outcome-pill">€100M compliance penalty exposure avoided</div>
+            <div class="outcome-pill">€4M+ annual fraud losses eliminated</div>
+            <div class="outcome-pill">Payment fraud blocking: 0.5% → 56%</div>
+            <div class="outcome-pill down">&lt;1% friction for legitimate users</div>
+          </div>
+          <div class="case-reflection"><p>🔁 <strong>What I'd do differently:</strong> Invest in a shared feature store earlier — we rebuilt similar features across models independently, costing weeks of iteration time on each model.</p></div>
+        </div>
+        <div class="case-mockup">
+          <div class="mockup-browser">
+            <div class="browser-bar"><div class="browser-dot r"></div><div class="browser-dot y"></div><div class="browser-dot g"></div><div class="browser-url">hellofresh.com / fraud-intelligence</div></div>
+            <div class="browser-body">
+              <div class="fraud-header">⚡ Fraud Intelligence Dashboard</div>
+              <div class="fraud-score-row">
+                <svg width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="#1e1e38" stroke-width="5"/><circle cx="30" cy="30" r="22" fill="none" stroke="#4ade80" stroke-width="5" stroke-dasharray="97 41" stroke-dashoffset="30" stroke-linecap="round"/><text x="30" y="35" text-anchor="middle" font-size="10" fill="#4ade80" font-weight="700">SAFE</text></svg>
+                <div><div class="fraud-score-val">99.2%</div><div class="fraud-score-lbl">Legitimate user pass rate</div></div>
+              </div>
+              <div class="fraud-bars">
+                <div class="fraud-bar-row"><span style="width:70px;">ATO Model</span><div class="fraud-bar-bg"><div class="fraud-bar-fill" style="width:94%;background:#6366f1;"></div></div><span>94%</span></div>
+                <div class="fraud-bar-row"><span style="width:70px;">Payment Fraud</span><div class="fraud-bar-bg"><div class="fraud-bar-fill" style="width:56%;background:#22d3ee;"></div></div><span>56%</span></div>
+                <div class="fraud-bar-row"><span style="width:70px;">Claim Fraud</span><div class="fraud-bar-bg"><div class="fraud-bar-fill" style="width:88%;background:#f59e0b;"></div></div><span>88%</span></div>
+              </div>
+              <div class="fraud-blocked"><span>Annualised losses prevented</span><strong>€4.3M</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-card-inner reverse">
+        <div class="case-content">
+          <div class="case-tag tag-rakuten">Rakuten · 2019–2021</div>
+          <h3>0→1 Observability Platform that became a $17M/yr PaaS</h3>
+          <div class="case-company">Product Manager II — Cloud Platform · Bangalore</div>
+          <div class="case-section-label">The Problem</div>
+          <p class="case-text">130+ internal developer teams at Rakuten used fragmented monitoring tools. The cloud platform was a cost center—with 1.9B members depending on Rakuten's ecosystem, reliability was non-negotiable.</p>
+          <div class="case-section-label">The Bet</div>
+          <p class="case-text">Build a full-stack, API-first observability platform from scratch compelling enough to shift 70+ business units to a Platform-as-a-Service model.</p>
+          <div class="case-section-label">How I Drove It</div>
+          <p class="case-text">Led 3 cross-functional teams (engineers, PM, UX) through product-driven discovery and delivery. Architected API-first cloud services. Executed comprehensive GTM across on-prem and cloud.</p>
+          <div class="case-outcomes">
+            <div class="outcome-pill">$17M/year saved via PaaS model</div>
+            <div class="outcome-pill">Platform commercialized as Rakuten SixthSense</div>
+            <div class="outcome-pill">130+ developer teams onboarded</div>
+            <div class="outcome-pill">Vendor lock-in eliminated across 70+ BUs</div>
+          </div>
+          <div class="case-reflection"><p>🔁 <strong>What I'd do differently:</strong> Run a formal DX survey at 3 months. We learned too late that onboarding docs were the #1 adoption blocker—not feature gaps.</p></div>
+          <a href="https://sixthsense.rakuten.com/" target="_blank" class="mockup-link" style="margin-top:1.2rem;">View Rakuten SixthSense live</a>
+        </div>
+        <div class="case-mockup">
+          <div class="mockup-browser">
+            <div class="browser-bar"><div class="browser-dot r"></div><div class="browser-dot y"></div><div class="browser-dot g"></div><div class="browser-url">sixthsense.rakuten.com</div></div>
+            <div class="browser-body">
+              <div class="ss-mockup-header">🔭 Unified Observability · SixthSense</div>
+              <div class="ss-metrics-row">
+                <div class="ss-metric"><div class="ss-metric-val">99.97%</div><div class="ss-metric-lbl">Uptime</div></div>
+                <div class="ss-metric"><div class="ss-metric-val" style="color:#f59e0b;">42ms</div><div class="ss-metric-lbl">P99 Latency</div></div>
+                <div class="ss-metric"><div class="ss-metric-val" style="color:#4ade80;">0</div><div class="ss-metric-lbl">Alerts</div></div>
+              </div>
+              <div style="width:100%;height:70px;margin-bottom:0.8rem;">
+                <svg width="100%" height="100%" viewBox="0 0 200 70" preserveAspectRatio="none">
+                  <defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6366f1" stop-opacity="0.3"/><stop offset="100%" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs>
+                  <path fill="url(#sparkGrad)" d="M0,55 L20,45 L40,50 L60,30 L80,35 L100,20 L120,25 L140,10 L160,15 L180,5 L200,7 L200,70 L0,70 Z"/>
+                  <path fill="none" stroke="#6366f1" stroke-width="2" d="M0,55 L20,45 L40,50 L60,30 L80,35 L100,20 L120,25 L140,10 L160,15 L180,5 L200,7"/>
+                </svg>
+              </div>
+              <div class="ss-alerts">
+                <div class="ss-alert"><div class="ss-alert-dot"></div>App Observability: All systems nominal</div>
+                <div class="ss-alert"><div class="ss-alert-dot"></div>DB Monitoring: 12 queries optimized</div>
+                <div class="ss-alert"><div class="ss-alert-dot warn"></div>Log spike · Auto-scaling triggered</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-card-inner">
+        <div class="case-content">
+          <div class="case-tag tag-clear">Clear (ClearTax) · 2018–2019</div>
+          <h3>6× Users &amp; 5× AUM: B2C Wealth Management from Scratch</h3>
+          <div class="case-company">Product Manager — Investments Platform · Bangalore</div>
+          <div class="case-section-label">The Problem</div>
+          <p class="case-text">India's retail investors were under-served—complex mutual fund investing deterred millions. ClearTax had a massive captive base of tax filers but no path to monetizing them beyond tax season.</p>
+          <div class="case-section-label">The Bet</div>
+          <p class="case-text">Build a 0-commission B2C investing platform on ClearTax's trust base—curated fund plans that matched user goals, not just fund categories.</p>
+          <div class="case-section-label">How I Drove It</div>
+          <p class="case-text">Shaped GTM &amp; growth strategy. Led discovery, UX, and delivery. Built plans (Save Taxes, Aggressive Growth, Better than FD) matched to user financial goals.</p>
+          <div class="case-outcomes">
+            <div class="outcome-pill">AUM: INR 276M → INR 1.38B in 15 months</div>
+            <div class="outcome-pill">6× user base growth</div>
+            <div class="outcome-pill">ARR reached $160K</div>
+            <div class="outcome-pill">25+ lakh investors on platform</div>
+          </div>
+          <div class="case-reflection"><p>🔁 <strong>What I'd do differently:</strong> Add behavioral nudges for SIP top-ups at 6 months — strong initial investment but under-invested in retention mechanics.</p></div>
+          <a href="https://cleartax.in/mutual-funds" target="_blank" class="mockup-link" style="margin-top:1.2rem;">View Clear Mutual Funds live</a>
+        </div>
+        <div class="case-mockup">
+          <div class="mockup-browser">
+            <div class="browser-bar"><div class="browser-dot r"></div><div class="browser-dot y"></div><div class="browser-dot g"></div><div class="browser-url">cleartax.in/mutual-funds</div></div>
+            <div class="browser-body">
+              <div class="mf-header">📈 Black by ClearTax · Investments</div>
+              <div class="mf-aum"><span class="mf-aum-val">₹1.38B</span><span class="mf-aum-change">↑ 5× in 15 months</span><div class="mf-aum-lbl">Total AUM</div></div>
+              <div class="mf-funds">
+                <div class="mf-fund-row"><span class="mf-fund-name">Aggressive Growth Plan</span><span class="mf-fund-ret">17.0% 5Y</span></div>
+                <div class="mf-fund-row"><span class="mf-fund-name">Tax Saver (ELSS)</span><span class="mf-fund-ret">16.5% 5Y</span></div>
+                <div class="mf-fund-row"><span class="mf-fund-name">Better than FD</span><span class="mf-fund-ret">7.5% 5Y</span></div>
+              </div>
+              <div class="mf-growth"><span>User growth: <strong>6× in 15 months</strong> · 0% Commission</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="case-card">
+      <div class="case-card-inner reverse">
+        <div class="case-content">
+          <div class="case-tag tag-goto">Clear (ClearTax) · B2B</div>
+          <h3>India's First AI-Powered Accounts Payable Engine</h3>
+          <div class="case-company">Product — AP Automation · Enterprise FinTech</div>
+          <div class="case-section-label">The Product</div>
+          <p class="case-text">Clear's B2B AP Automation platform transformed accounts payable for 4,500+ enterprises — AI-driven invoice digitisation, 60+ compliance checks, and working capital visibility to eliminate manual processing.</p>
+          <div class="case-section-label">What It Solves</div>
+          <p class="case-text">Manual AP is error-prone and fraud-prone. Clear AP automated invoice capture (OCR), ERP integration, multi-channel submission, and touchless approvals — with vendor communication built in.</p>
+          <div class="case-outcomes">
+            <div class="outcome-pill">80% processing cost savings</div>
+            <div class="outcome-pill">10% working capital improvement</div>
+            <div class="outcome-pill">4,500+ enterprises</div>
+            <div class="outcome-pill">4% AP spend savings via leakage prevention</div>
+          </div>
+          <a href="https://www.clear.in/ap-automation-software" target="_blank" class="mockup-link" style="margin-top:1.2rem;">View Clear AP live</a>
+        </div>
+        <div class="case-mockup">
+          <div class="mockup-browser">
+            <div class="browser-bar"><div class="browser-dot r"></div><div class="browser-dot y"></div><div class="browser-dot g"></div><div class="browser-url">clear.in/ap-automation-software</div></div>
+            <div class="browser-body">
+              <div class="ap-header">⚡ Clear AP · Invoice Intelligence</div>
+              <div class="ap-stat-row">
+                <div class="ap-stat"><div class="ap-stat-val">80%</div><div class="ap-stat-lbl">Cost savings</div></div>
+                <div class="ap-stat"><div class="ap-stat-val">60+</div><div class="ap-stat-lbl">Compliance checks</div></div>
+                <div class="ap-stat"><div class="ap-stat-val">4,500+</div><div class="ap-stat-lbl">Enterprises</div></div>
+                <div class="ap-stat"><div class="ap-stat-val">10%</div><div class="ap-stat-lbl">Working capital</div></div>
+              </div>
+              <div class="ap-invoice">
+                <div class="ap-inv-row"><span class="ap-inv-name">INV-0042 · Tata Steel Ltd</span><span class="ap-inv-status approved">Approved</span></div>
+                <div class="ap-inv-row"><span class="ap-inv-name">INV-0043 · Reliance Ind.</span><span class="ap-inv-status processing">OCR Processing</span></div>
+                <div class="ap-inv-row"><span class="ap-inv-name">INV-0044 · Infosys Ltd</span><span class="ap-inv-status approved">Compliance ✓</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="section-divider"/>
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2>What I bring</h2>
+  <div class="skills-grid">
+    <div class="skill-group"><h4>Domain</h4><div class="skill-tags"><span class="skill-tag">Fraud &amp; Compliance</span><span class="skill-tag">ML/AI Product</span><span class="skill-tag">FinTech / Payments</span><span class="skill-tag">Wealth Management</span><span class="skill-tag">Developer Platforms</span><span class="skill-tag">B2C Growth</span></div></div>
+    <div class="skill-group"><h4>Product</h4><div class="skill-tags"><span class="skill-tag">0→1 Product Builds</span><span class="skill-tag">Product-Led Growth</span><span class="skill-tag">OKRs &amp; Roadmaps</span><span class="skill-tag">Experimentation</span><span class="skill-tag">Stakeholder Mgmt</span><span class="skill-tag">PM Mentorship</span></div></div>
+    <div class="skill-group"><h4>Technical</h4><div class="skill-tags"><span class="skill-tag">API-first Design</span><span class="skill-tag">Microservices / SaaS</span><span class="skill-tag">LLM Apps (LangChain)</span><span class="skill-tag">MLOps</span><span class="skill-tag">Model Fine-Tuning</span><span class="skill-tag">Vibe-coding (Claude, Cursor)</span></div></div>
+  </div>
+</section>
+<hr class="section-divider"/>
+<section id="timeline">
+  <div class="section-label">Career</div>
+  <h2>The journey</h2>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-period">Jan 2023 – Present · Berlin, Germany</div><div class="timeline-role">Product Lead</div><div class="timeline-company">HelloFresh Group</div><div class="timeline-desc">Leading ML &amp; GenAI initiatives to combat fraud and reduce compliance risk globally. Established AI Governance framework; improved developer velocity 55% via secure AI coding tools.</div></div>
+    <div class="timeline-item"><div class="timeline-period">Aug 2021 – Dec 2022 · Berlin, Germany</div><div class="timeline-role">Senior Product Manager</div><div class="timeline-company">GoTo Technologies</div><div class="timeline-desc">Led platform upgrades for high-scale Real-Time Communications for 1M+ enterprise users. Architectural overhaul reduced churn losses by $12M. 30% rNPS improvement.</div></div>
+    <div class="timeline-item"><div class="timeline-period">Dec 2019 – May 2021 · Bangalore, India</div><div class="timeline-role">Product Manager II</div><div class="timeline-company">Rakuten</div><div class="timeline-desc">Launched Rakuten SixthSense from 0→1. Led 3 teams. Transitioned platform from cost center to PaaS, saving $17M annually.</div></div>
+    <div class="timeline-item"><div class="timeline-period">Mar 2018 – Dec 2019 · Bangalore, India</div><div class="timeline-role">Product Manager</div><div class="timeline-company">Clear (ClearTax)</div><div class="timeline-desc">Launched B2C wealth management platform. Grew AUM from INR 276M to 1.38B and user base 6× in 15 months.</div></div>
+    <div class="timeline-item"><div class="timeline-period">May 2015 – Mar 2018 · India &amp; US</div><div class="timeline-role">Multiple PM Roles</div><div class="timeline-company">E-Commerce Scale-ups</div><div class="timeline-desc">Launched and scaled multiple B2C products delivering &gt;$3M revenue growth.</div></div>
+    <div class="timeline-item" style="padding-bottom:0;"><div class="timeline-period">2012–2014</div><div class="timeline-role">Post-Graduate Diploma in Management</div><div class="timeline-company">IIM Udaipur</div><div class="timeline-desc">Indian Institute of Management, Udaipur. B.E. EEE, R.V. College of Engineering (2006–2010).</div></div>
+  </div>
+</section>
+<div id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="text-align:center;margin-bottom:0.5rem;">Get in touch</div>
+    <h2>Let's build something that matters</h2>
+    <p>Open to Senior PM, Head of Product, and VP of Product roles in AI, FinTech, or platform companies. Based in Brandenburg, Germany — open to Berlin and remote.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/aditya-raghunath-79949b23/" target="_blank" class="contact-link-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+      <a href="mailto:aditya.raghunath@iimu.ac.in" class="contact-link-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>aditya.raghunath@iimu.ac.in</a>
+      <a href="tel:+4917679042378" class="contact-link-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.17 12 19.79 19.79 0 0 1 1.1 3.38 2 2 0 0 1 3.08 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>+49 176 7904 2378</a>
+    </div>
+  </div>
+</div>
+<footer>© 2026 Aditya Raghunath · Strategic Technical Product Leader · Brandenburg, Germany</footer>
+</body>
+</html>
