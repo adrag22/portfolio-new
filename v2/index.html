@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Raghunath — Enterprise AI Product Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0a0f0d;
+      --surface:#0f1614;
+      --surface2:#151e1b;
+      --border:#1f2b26;
+      --accent:#10b981;
+      --accent2:#34d399;
+      --accent-glow:rgba(16,185,129,0.16);
+      --violet:#a78bfa;
+      --amber:#fbbf24;
+      --text:#ecfdf5;
+      --text2:#d1fae5;
+      --muted:#6b7d76;
+      --muted2:#9ca3af;
+      --font:'Inter',sans-serif;
+      --mono:'JetBrains Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;background:rgba(10,15,13,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-size:0.95rem;font-weight:700;letter-spacing:-0.02em;display:flex;align-items:center;gap:0.55rem}
+    .nav-logo-dot{width:8px;height:8px;background:var(--accent);border-radius:2px;box-shadow:0 0 12px var(--accent-glow)}
+    .nav-links{display:flex;gap:2rem;align-items:center}
+    .nav-links a{font-size:0.85rem;color:var(--muted2);font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-cta{background:var(--accent);color:#04120c;padding:0.5rem 1.2rem;border-radius:6px;font-size:0.82rem;font-weight:700;transition:all .2s}
+    .nav-cta:hover{background:var(--accent2);color:#04120c}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:8rem 2.5rem 5rem;max-width:1200px;margin:0 auto;position:relative}
+    .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent-glow);border:1px solid rgba(16,185,129,0.35);color:var(--accent2);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.4rem 1rem;border-radius:100px;margin-bottom:1.8rem;width:fit-content;font-family:var(--mono)}
+    .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;box-shadow:0 0 8px var(--accent);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+    h1{font-size:clamp(2.6rem,5.8vw,5.2rem);font-weight:800;letter-spacing:-0.035em;line-height:1.05;margin-bottom:1.5rem}
+    h1 .grad{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 50%,var(--violet) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-sub{font-size:clamp(1.05rem,1.6vw,1.25rem);color:var(--muted2);max-width:640px;line-height:1.65;margin-bottom:2.4rem}
+    .hero-sub strong{color:var(--text);font-weight:600}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+    .btn-primary{background:var(--accent);color:#04120c;padding:0.85rem 1.9rem;border-radius:8px;font-weight:700;font-size:0.92rem;transition:all .2s}
+    .btn-primary:hover{background:var(--accent2);transform:translateY(-1px);color:#04120c}
+    .btn-ghost{border:1px solid var(--border);color:var(--text2);padding:0.85rem 1.9rem;border-radius:8px;font-weight:500;font-size:0.92rem;transition:all .2s}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--text)}
+    .hero-glow{position:absolute;top:15%;right:-15%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.09) 0%,transparent 65%);pointer-events:none}
+    .hero-scroll{display:flex;align-items:center;gap:0.6rem;font-family:var(--mono);font-size:0.7rem;color:var(--muted);letter-spacing:0.14em;text-transform:uppercase}
+    .hero-scroll-line{width:40px;height:1px;background:var(--muted)}
+
+    /* SECTIONS */
+    section{padding:5.5rem 2.5rem;max-width:1200px;margin:0 auto}
+    .section-label{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.6rem}
+    .section-label::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:2px}
+    h2{font-size:clamp(1.9rem,3.8vw,3rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:1rem;line-height:1.1}
+    .section-divider{border:none;border-top:1px solid var(--border);max-width:1200px;margin:0 auto}
+
+    /* METRICS BAR */
+    #metrics{background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%);max-width:100%;padding:4rem 2.5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+    #metrics::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(16,185,129,0.08),transparent 50%);pointer-events:none}
+    .metrics-inner{max-width:1200px;margin:0 auto;position:relative}
+    .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2.5rem}
+    .metric-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.8rem;position:relative;overflow:hidden;transition:all .25s}
+    .metric-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+    .metric-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+    .metric-value{font-size:clamp(1.9rem,3vw,2.6rem);font-weight:800;letter-spacing:-0.04em;color:var(--text);line-height:1;margin-bottom:0.5rem}
+    .metric-value span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .metric-label{font-size:0.8rem;color:var(--muted2);line-height:1.5}
+    .metric-context{font-family:var(--mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-top:0.6rem}
+
+    /* PILLARS */
+    #pillars{padding-top:5rem}
+    .pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-top:3rem}
+    .pillar-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;position:relative;transition:all .25s}
+    .pillar-card:hover{border-color:rgba(16,185,129,0.4);transform:translateY(-3px)}
+    .pillar-icon{width:44px;height:44px;background:var(--accent-glow);border:1px solid rgba(16,185,129,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1.2rem}
+    .pillar-title{font-size:1.05rem;font-weight:700;margin-bottom:0.5rem}
+    .pillar-desc{font-size:0.88rem;color:var(--muted2);line-height:1.65}
+
+    /* CASE STUDIES */
+    #work{padding-top:5rem}
+    .work-intro{max-width:600px;margin-bottom:3.5rem}
+    .work-intro p{color:var(--muted2);font-size:1rem;line-height:1.7}
+    .case-studies{display:flex;flex-direction:column;gap:3rem}
+    .case-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:border-color .25s}
+    .case-card:hover{border-color:rgba(16,185,129,0.4)}
+    .case-card-inner{display:grid;grid-template-columns:1fr 1fr}
+    .case-card-inner.reverse{direction:rtl}
+    .case-card-inner.reverse>*{direction:ltr}
+    .case-content{padding:2.8rem}
+    .case-meta{display:flex;align-items:center;gap:0.7rem;margin-bottom:1rem}
+    .case-tag{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.28rem 0.75rem;border-radius:4px;font-family:var(--mono)}
+    .tag-hf{background:rgba(16,185,129,0.15);color:var(--accent2)}
+    .tag-goto{background:rgba(251,191,36,0.12);color:var(--amber)}
+    .tag-rakuten{background:rgba(167,139,250,0.14);color:var(--violet)}
+    .tag-clear{background:rgba(52,211,153,0.12);color:#6ee7b7}
+    .case-year{font-family:var(--mono);font-size:0.7rem;color:var(--muted)}
+    .case-content h3{font-size:1.45rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.5rem;line-height:1.25}
+    .case-role{font-size:0.82rem;color:var(--muted);margin-bottom:1.4rem;font-family:var(--mono)}
+    .case-section-label{font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.35rem;margin-top:1.1rem;font-family:var(--mono)}
+    .case-text{font-size:0.9rem;color:var(--muted2);line-height:1.7}
+    .case-text strong{color:var(--text);font-weight:600}
+    .case-outcomes{margin-top:1.4rem;display:grid;grid-template-columns:1fr 1fr;gap:0.6rem}
+    .outcome-pill{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:0.7rem 0.85rem;display:flex;flex-direction:column;gap:0.15rem}
+    .outcome-num{font-size:1.05rem;font-weight:700;color:var(--accent2);letter-spacing:-0.02em;font-family:var(--mono)}
+    .outcome-label{font-size:0.68rem;color:var(--muted2);line-height:1.35}
+
+    /* MOCKUP PANELS */
+    .case-mockup{background:linear-gradient(135deg,var(--surface2) 0%,var(--bg) 100%);border-left:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem;min-height:400px;overflow:hidden;position:relative}
+    .case-card-inner.reverse .case-mockup{border-left:none;border-right:1px solid var(--border)}
+    .mockup-app{width:100%;background:#0a1310;border-radius:12px;border:1px solid #1f2b26;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.6)}
+    .app-bar{background:#0d1815;padding:0.65rem 1rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid #1f2b26}
+    .app-dot{width:8px;height:8px;border-radius:50%}
+    .app-dot.r{background:#ef4444}.app-dot.y{background:#f59e0b}.app-dot.g{background:#22c55e}
+    .app-title{flex:1;font-family:var(--mono);font-size:0.7rem;color:var(--muted);margin-left:0.7rem}
+    .app-body{padding:1.3rem}
+
+    /* Marketing AI mockup */
+    .mkt-header{display:flex;align-items:center;gap:0.5rem;font-size:0.7rem;font-weight:700;color:var(--accent2);letter-spacing:0.06em;margin-bottom:0.9rem;font-family:var(--mono);text-transform:uppercase}
+    .mkt-pipeline{display:flex;gap:0.4rem;margin-bottom:1rem;align-items:center}
+    .mkt-node{flex:1;background:#0d1815;border:1px solid #1f2b26;border-radius:6px;padding:0.5rem;text-align:center}
+    .mkt-node-label{font-size:0.55rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.2rem}
+    .mkt-node-val{font-size:0.72rem;color:var(--accent2);font-weight:700}
+    .mkt-arrow{color:var(--muted);font-size:0.75rem}
+    .mkt-segments{display:flex;flex-direction:column;gap:0.35rem;margin-bottom:0.8rem}
+    .mkt-seg{background:#0d1815;border-radius:5px;padding:0.45rem 0.6rem;display:flex;align-items:center;gap:0.5rem;font-size:0.68rem;color:var(--text2)}
+    .mkt-seg-icon{width:6px;height:6px;border-radius:50%}
+    .mkt-seg-icon.paid{background:var(--accent)}
+    .mkt-seg-icon.organic{background:var(--violet)}
+    .mkt-seg-icon.hybrid{background:var(--amber)}
+    .mkt-seg-score{margin-left:auto;font-family:var(--mono);font-size:0.65rem;color:var(--accent2);font-weight:700}
+    .mkt-cta{background:linear-gradient(90deg,rgba(16,185,129,0.12),rgba(52,211,153,0.06));border:1px solid rgba(16,185,129,0.25);border-radius:5px;padding:0.55rem;display:flex;justify-content:space-between;align-items:center}
+    .mkt-cta-txt{font-size:0.65rem;color:var(--text2)}
+    .mkt-cta-btn{font-size:0.6rem;background:var(--accent);color:#04120c;padding:0.2rem 0.6rem;border-radius:4px;font-weight:700;font-family:var(--mono)}
+
+    /* GoTo mockup */
+    .goto-header{font-size:0.7rem;font-weight:700;color:var(--amber);letter-spacing:0.06em;margin-bottom:0.9rem;font-family:var(--mono);text-transform:uppercase}
+    .goto-tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin-bottom:0.8rem}
+    .goto-tier{background:#0d1815;border-radius:6px;padding:0.6rem;text-align:center;border:1px solid #1f2b26}
+    .goto-tier.pro{border-color:var(--amber);background:rgba(251,191,36,0.08)}
+    .goto-tier-name{font-size:0.55rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.3rem}
+    .goto-tier-price{font-size:1rem;font-weight:800;color:var(--text)}
+    .goto-tier-users{font-size:0.55rem;color:var(--muted2);margin-top:0.2rem}
+    .goto-stats{display:flex;gap:0.5rem}
+    .goto-stat{flex:1;background:#0d1815;border-radius:6px;padding:0.55rem;text-align:center}
+    .goto-stat-val{font-size:0.9rem;font-weight:700;color:var(--amber);font-family:var(--mono)}
+    .goto-stat-lbl{font-size:0.55rem;color:var(--muted);margin-top:0.15rem}
+    .goto-integrations{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.8rem}
+    .goto-int{background:#0d1815;border:1px solid #1f2b26;border-radius:4px;padding:0.25rem 0.5rem;font-size:0.55rem;color:var(--muted2);font-family:var(--mono)}
+
+    /* Rakuten mockup */
+    .rak-header{font-size:0.7rem;font-weight:700;color:var(--violet);letter-spacing:0.06em;margin-bottom:0.9rem;font-family:var(--mono);text-transform:uppercase}
+    .rak-services{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.8rem}
+    .rak-svc{background:#0d1815;border-radius:6px;padding:0.6rem;border:1px solid #1f2b26}
+    .rak-svc-name{font-size:0.62rem;font-weight:600;color:var(--text2)}
+    .rak-svc-api{font-family:var(--mono);font-size:0.55rem;color:var(--violet);margin-top:0.2rem}
+    .rak-svc-status{display:inline-block;width:5px;height:5px;background:#22c55e;border-radius:50%;margin-right:0.25rem}
+    .rak-adoption{background:#0d1815;border-radius:6px;padding:0.6rem;margin-bottom:0.4rem}
+    .rak-adoption-row{display:flex;justify-content:space-between;align-items:center;font-size:0.6rem;margin-bottom:0.35rem;color:var(--muted2)}
+    .rak-adoption-bar{height:4px;background:#1f2b26;border-radius:2px;overflow:hidden}
+    .rak-adoption-fill{height:100%;background:linear-gradient(90deg,var(--violet),var(--accent2));border-radius:2px}
+    .rak-savings{background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:5px;padding:0.5rem;display:flex;justify-content:space-between;align-items:center;font-size:0.62rem;color:var(--text2)}
+    .rak-savings strong{color:var(--violet);font-family:var(--mono);font-size:0.8rem}
+
+    /* Clear mockup */
+    .clr-header{font-size:0.7rem;font-weight:700;color:#6ee7b7;letter-spacing:0.06em;margin-bottom:0.9rem;font-family:var(--mono);text-transform:uppercase}
+    .clr-connectors{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.4rem;margin-bottom:0.8rem}
+    .clr-erp{background:#0d1815;border-radius:5px;padding:0.5rem;text-align:center;border:1px solid #1f2b26}
+    .clr-erp-name{font-size:0.6rem;font-weight:700;color:var(--text)}
+    .clr-erp-status{font-size:0.5rem;color:var(--accent2);font-family:var(--mono);margin-top:0.2rem}
+    .clr-flow{background:#0d1815;border-radius:6px;padding:0.7rem;margin-bottom:0.5rem}
+    .clr-flow-title{font-size:0.6rem;color:var(--muted2);margin-bottom:0.4rem}
+    .clr-flow-metrics{display:flex;justify-content:space-around;gap:0.4rem}
+    .clr-flow-metric{text-align:center;flex:1}
+    .clr-flow-val{font-size:0.85rem;font-weight:700;color:#6ee7b7;font-family:var(--mono)}
+    .clr-flow-lbl{font-size:0.5rem;color:var(--muted);margin-top:0.1rem}
+
+    .mockup-link{margin-top:1rem;font-size:0.75rem;color:var(--accent2);display:flex;align-items:center;gap:0.4rem;font-weight:600;font-family:var(--mono);transition:gap .2s}
+    .mockup-link:hover{gap:0.7rem}
+    .mockup-link::after{content:'→'}
+
+    /* SKILLS */
+    #skills{padding-top:5rem}
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+    .skill-group{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:border-color .2s}
+    .skill-group:hover{border-color:rgba(16,185,129,0.3)}
+    .skill-group h4{font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;font-family:var(--mono);display:flex;align-items:center;gap:0.5rem}
+    .skill-group h4::before{content:'';width:8px;height:8px;background:var(--accent);border-radius:2px}
+    .skill-tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+    .skill-tag{background:var(--surface2);border:1px solid var(--border);color:var(--text2);font-size:0.78rem;padding:0.35rem 0.75rem;border-radius:6px;font-weight:500}
+
+    /* TIMELINE */
+    #timeline{padding-top:5rem}
+    .timeline{position:relative;margin-top:3rem;padding-left:2rem}
+    .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent) 0%,var(--border) 100%)}
+    .timeline-item{position:relative;padding:0 0 2.8rem 2rem}
+    .timeline-item::before{content:'';position:absolute;left:-0.42rem;top:0.3rem;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--bg),0 0 12px var(--accent-glow)}
+    .timeline-period{font-family:var(--mono);font-size:0.72rem;color:var(--muted);margin-bottom:0.4rem;letter-spacing:0.05em}
+    .timeline-role{font-size:1.1rem;font-weight:700;margin-bottom:0.15rem}
+    .timeline-company{font-size:0.85rem;color:var(--accent2);font-weight:500;margin-bottom:0.6rem;font-family:var(--mono)}
+    .timeline-desc{font-size:0.88rem;color:var(--muted2);line-height:1.7}
+
+    /* CONTACT */
+    #contact{background:linear-gradient(180deg,var(--bg) 0%,var(--surface) 100%);max-width:100%;border-top:1px solid var(--border);padding:6rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+    #contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(16,185,129,0.08),transparent 60%);pointer-events:none}
+    .contact-inner{max-width:640px;margin:0 auto;position:relative}
+    .contact-inner .section-label{justify-content:center;display:inline-flex;margin-bottom:1rem}
+    .contact-inner h2{margin-bottom:1rem}
+    .contact-inner p{color:var(--muted2);margin-bottom:2rem;font-size:1.05rem;line-height:1.65}
+    .contact-links{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap}
+    .contact-pill{display:flex;align-items:center;gap:0.55rem;border:1px solid var(--border);background:var(--surface);padding:0.75rem 1.4rem;border-radius:10px;font-size:0.88rem;font-weight:500;transition:all .2s;color:var(--text2)}
+    .contact-pill:hover{border-color:var(--accent);color:var(--text);background:var(--surface2)}
+    .contact-pill.primary{background:var(--accent);color:#04120c;border-color:var(--accent);font-weight:700}
+    .contact-pill.primary:hover{background:var(--accent2);color:#04120c}
+
+    /* FOOTER */
+    footer{text-align:center;padding:2rem;font-size:0.75rem;color:var(--muted);border-top:1px solid var(--border);font-family:var(--mono);letter-spacing:0.03em}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      nav{padding:1rem 1.2rem}
+      .nav-links a:not(.nav-cta){display:none}
+      section{padding:4rem 1.2rem}
+      #hero{padding:6rem 1.2rem 3rem}
+      .case-card-inner{grid-template-columns:1fr}
+      .case-card-inner.reverse{direction:ltr}
+      .case-mockup{border-left:none;border-top:1px solid var(--border);min-height:300px;padding:1.5rem}
+      .case-content{padding:2rem}
+      .case-outcomes{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span class="nav-logo-dot"></span>Aditya Raghunath</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#skills">Skills</a>
+    <a href="#timeline">Experience</a>
+    <a href="https://www.linkedin.com/in/aditya-raghunath-79949b23/" target="_blank" class="nav-cta">LinkedIn →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1200px;margin:0 auto;position:relative">
+  <section id="hero">
+    <div class="hero-badge">Enterprise AI · SaaS · Commercial Strategy</div>
+    <h1>
+      I commercialize <span class="grad">Enterprise AI</span><br/>
+      into products the market pays for.
+    </h1>
+    <p class="hero-sub">
+      Strategic Product Leader with <strong>10+ years</strong> building, scaling, and monetizing B2B SaaS, PaaS, and Enterprise AI platforms. GenAI-driven decisioning systems, agentic automation, and unified experiences — turning siloed capabilities into <strong>$10M+ ARR</strong>, <strong>$12M+ retention</strong>, and <strong>$17M platform savings</strong>.
+    </p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">See case studies →</a>
+      <a href="https://www.linkedin.com/in/aditya-raghunath-79949b23/" target="_blank" class="btn-ghost">Connect on LinkedIn</a>
+    </div>
+    <div class="hero-scroll"><div class="hero-scroll-line"></div>Scroll to explore</div>
+    <div class="hero-glow"></div>
+  </section>
+</div>
+
+<!-- METRICS -->
+<div id="metrics">
+  <div class="metrics-inner">
+    <div class="section-label">Signal · Metrics that matter</div>
+    <h2>Business outcomes, not vanity numbers</h2>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-value"><span>$10M+</span></div>
+        <div class="metric-label">ARR boost via unified commerce & pricing tier restructure</div>
+        <div class="metric-context">GoTo · SaaS Monetization</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value"><span>$12M</span></div>
+        <div class="metric-label">Annual B2B churn losses reduced via marketplace integrations</div>
+        <div class="metric-context">GoTo · Retention</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value"><span>$17M</span></div>
+        <div class="metric-label">Annual savings from cost-center → PaaS transformation</div>
+        <div class="metric-context">Rakuten · Platform</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value"><span>$2M</span></div>
+        <div class="metric-label">ARR from APAC SaaS extension of internal platform</div>
+        <div class="metric-context">Rakuten · Commercialization</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value"><span>50%</span></div>
+        <div class="metric-label">Faster campaign decisioning cycles via AI Agent orchestration</div>
+        <div class="metric-context">HelloFresh · GenAI</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value"><span>85%</span></div>
+        <div class="metric-label">Reduction in employee getting-started time via AI Search</div>
+        <div class="metric-context">HelloFresh · Internal AI</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="section-label">Focus areas</div>
+  <h2>Where I create leverage</h2>
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div class="pillar-icon">🤖</div>
+      <div class="pillar-title">GenAI & AI Agents</div>
+      <div class="pillar-desc">Natural language search, conversational experiences, and decisioning systems that automate complex enterprise workflows.</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">💰</div>
+      <div class="pillar-title">SaaS Commercialization</div>
+      <div class="pillar-desc">Pricing & packaging, PaaS-ification of internal platforms, unified commerce, and cross-sell motion design.</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">🔗</div>
+      <div class="pillar-title">Unified Experiences</div>
+      <div class="pillar-desc">Transforming siloed apps into high-ROI unified surfaces for enterprises — marketplace integrations, API-first design, ISV/SI ecosystems.</div>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-icon">🎯</div>
+      <div class="pillar-title">GTM & C-Suite Alignment</div>
+      <div class="pillar-desc">Translating technical capability into commercial narratives. Aligning multi-year platform visions with executive stakeholders.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="section-label">Case Studies</div>
+  <h2>Where I've made bets</h2>
+  <div class="work-intro">
+    <p>Deep dives into 4 initiatives — each structured as the <strong>problem</strong>, the <strong>bet</strong>, how I <strong>drove it</strong>, and the <strong>measurable outcome</strong>. What separates a good PM from a great one is showing your work, not just your wins.</p>
+  </div>
+
+  <div class="case-studies">
+
+    <!-- Case 1: HelloFresh AI Agent Marketing -->
+    <div class="case-card">
+      <div class="case-card-inner">
+        <div class="case-content">
+          <div class="case-meta">
+            <span class="case-tag tag-hf">HelloFresh</span>
+            <span class="case-year">2023–Present</span>
+          </div>
+          <h3>CDP → ML Scoring → AI Agent Orchestration for Global Marketing</h3>
+          <div class="case-role">Product Lead · Enterprise AI · Global</div>
+
+          <div class="case-section-label">The Problem</div>
+          <p class="case-text">Marketing teams across HelloFresh Group were making channel-mix and creative decisions on lagging indicators — long campaign lead times, siloed audience data, and no way to systematically match creative to intent signals across paid & organic channels.</p>
+
+          <div class="case-section-label">The Bet</div>
+          <p class="case-text">Build a <strong>customer data enrichment layer on the CDP</strong> feeding ML models that scored prospects and existing customers, orchestrated by an <strong>AI Agent layer</strong> that segmented audiences by channel and surfaced high-relevance campaign recommendations — with humans reviewing before launch.</p>
+
+          <div class="case-section-label">How I Drove It</div>
+          <p class="case-text">Aligned Data, ML, and Marketing leadership on the full pipeline. Translated technical architecture into commercial narratives for GTM adoption. Partnered with UX Design to prototype the decisioning + creative selection interface. Delivered strong positive Marketing team feedback.</p>
+
+          <div class="case-outcomes">
+            <div class="outcome-pill"><div class="outcome-num">-35%</div><div class="outcome-label">Campaign creative lead time</div></div>
+            <div class="outcome-pill"><div class="outcome-num">-50%</div><div class="outcome-label">Campaign decisioning cycles</div></div>
+            <div class="outcome-pill"><div class="outcome-num">+40%</div><div class="outcome-label">Faster insight generation</div></div>
+            <div class="outcome-pill"><div class="outcome-num">Global</div><div class="outcome-label">HelloFresh Group rollout</div></div>
+          </div>
+        </div>
+        <div class="case-mockup">
+          <div class="mockup-app">
+            <div class="app-bar">
+              <div class="app-dot r"></div><div class="app-dot y"></div><div class="app-dot g"></div>
+              <div class="app-title">hellofresh · marketing-ai / campaign-console</div>
+            </div>
+            <div class="app-body">
+              <div class="mkt-header">◆ Campaign Decisioning Engine</div>
+              <div class="mkt-pipeline">
+                <div class="mkt-node"><div class="mkt-node-label">CDP</div><div class="mkt-node-val">Enrich</div></div>
+                <div class="mkt-arrow">→</div>
+                <div class="mkt-node"><div class="mkt-node-label">ML</div><div class="mkt-node-val">Score</div></div>
+                <div class="mkt-arrow">→</div>
+                <div class="mkt-node"><div class="mkt-node-label">Agent</div><div class="mkt-node-val">Segment</div></div>
+              </div>
+              <div class="mkt-segments">
+                <div class="mkt-seg"><div class="mkt-seg-icon paid"></div>High-intent · Paid Social <span class="mkt-seg-score">0.92</span></div>
+                <div class="mkt-seg"><div class="mkt-seg-icon organic"></div>Winback · Email <span class="mkt-seg-score">0.87</span></div>
+                <div class="mkt-seg"><div class="mkt-seg-icon hybrid"></div>Prospecting · Multi-touch <span class="mkt-seg-score">0.79</span></div>
+              </div>
+              <div class="mkt-cta">
+                <div class="mkt-cta-txt">3 campaigns ready · Awaiting review</div>
+                <div class="mkt-cta-btn">Launch</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 2: GoTo Unified Commerce -->
+    <div class="case-card">
+      <div class="case-card-inner reverse">
+        <div class="case-content">
+          <div class="case-meta">
+            <span class="case-tag tag-goto">GoTo Technologies</span>
+            <span class="case-year">2021–2022</span>
+          </div>
+          <h3>Unified Commerce & Pricing Restructure across Remote Support + Collaboration</h3>
+          <div class="case-role">Senior Product Manager · Platform · Berlin</div>
+
+          <div class="case-section-label">The Problem</div>
+          <p class="case-text">GoTo's Remote Support and Collaboration products lived in <strong>separate commerce silos</strong> — different pricing pages, checkout flows, and packaging. 7M+ enterprise users couldn't easily cross-buy, and the sales team had no unified motion.</p>
+
+          <div class="case-section-label">The Bet</div>
+          <p class="case-text">Design and roll out a <strong>unified commerce system</strong> that restructured pricing tiers across the entire product portfolio — enabling cross-sell, tier-migration, and a single enterprise contract surface. Simultaneously, build marketplace integrations to lock in stickiness.</p>
+
+          <div class="case-section-label">How I Drove It</div>
+          <p class="case-text">Coordinated Platform, Billing, and GTM to migrate legacy SKUs into the new taxonomy. Prioritized ISV integrations that made switching costly. Enabled multi-feed video + interactive whiteboarding for large meetings under weak network conditions — reducing customer-facing churn triggers.</p>
+
+          <div class="case-outcomes">
+            <div class="outcome-pill"><div class="outcome-num">+$10M</div><div class="outcome-label">ARR from unified commerce</div></div>
+            <div class="outcome-pill"><div class="outcome-num">-$12M</div><div class="outcome-label">Annual churn losses</div></div>
+            <div class="outcome-pill"><div class="outcome-num">+30%</div><div class="outcome-label">rNPS improvement</div></div>
+            <div class="outcome-pill"><div class="outcome-num">7M+</div><div class="outcome-label">Enterprise users impacted</div></div>
+          </div>
+        </div>
+        <div class="case-mockup">
+          <div class="mockup-app">
+            <div class="app-bar">
+              <div class="app-dot r"></div><div class="app-dot y"></div><div class="app-dot g"></div>
+              <div class="app-title">goto · unified-commerce / pricing</div>
+            </div>
+            <div class="app-body">
+              <div class="goto-header">◆ Unified Commerce · Pricing Tiers</div>
+              <div class="goto-tiers">
+                <div class="goto-tier">
+                  <div class="goto-tier-name">Starter</div>
+                  <div class="goto-tier-price">$12</div>
+                  <div class="goto-tier-users">Per user/mo</div>
+                </div>
+                <div class="goto-tier pro">
+                  <div class="goto-tier-name">Business</div>
+                  <div class="goto-tier-price">$32</div>
+                  <div class="goto-tier-users">Per user/mo</div>
+                </div>
+                <div class="goto-tier">
+                  <div class="goto-tier-name">Enterprise</div>
+                  <div class="goto-tier-price">Custom</div>
+                  <div class="goto-tier-users">Volume pricing</div>
+                </div>
+              </div>
+              <div class="goto-stats">
+                <div class="goto-stat"><div class="goto-stat-val">+$10M</div><div class="goto-stat-lbl">ARR Uplift</div></div>
+                <div class="goto-stat"><div class="goto-stat-val">42%</div><div class="goto-stat-lbl">Cross-sell rate</div></div>
+                <div class="goto-stat"><div class="goto-stat-val">7M+</div><div class="goto-stat-lbl">Users</div></div>
+              </div>
+              <div class="goto-integrations">
+                <div class="goto-int">Salesforce</div>
+                <div class="goto-int">Slack</div>
+                <div class="goto-int">MS Teams</div>
+                <div class="goto-int">Zendesk</div>
+                <div class="goto-int">Okta</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 3: Rakuten SixthSense PaaS -->
+    <div class="case-card">
+      <div class="case-card-inner">
+        <div class="case-content">
+          <div class="case-meta">
+            <span class="case-tag tag-rakuten">Rakuten</span>
+            <span class="case-year">2019–2021</span>
+          </div>
+          <h3>Cost Center → $17M PaaS → $2M SaaS Extension in APAC</h3>
+          <div class="case-role">Product Manager II · Cloud Platform · Bangalore</div>
+
+          <div class="case-section-label">The Problem</div>
+          <p class="case-text">Rakuten's cloud platform served <strong>1.9B members</strong> and 130+ developer teams, but was seen internally as a cost center. There was no external revenue narrative, and 70+ business units were locked into vendor-specific integrations.</p>
+
+          <div class="case-section-label">The Bet</div>
+          <p class="case-text">Architect API-first cloud services (<strong>Compute, Storage, Observability</strong>) with standardized schemas that decoupled teams from vendor lock-in — then commercialize the platform first as internal PaaS, then extend to APAC as external SaaS via SI/ISV Partner Program.</p>
+
+          <div class="case-section-label">How I Drove It</div>
+          <p class="case-text">Designed extensible data models and API contracts. Led GTM strategy and SI/ISV Partner Program to drive enterprise adoption. Enabled 130+ dev teams to self-serve instrumentation without custom integrations — dramatically improving deployment velocity across BUs.</p>
+
+          <div class="case-outcomes">
+            <div class="outcome-pill"><div class="outcome-num">$17M/yr</div><div class="outcome-label">Internal PaaS savings</div></div>
+            <div class="outcome-pill"><div class="outcome-num">$2M ARR</div><div class="outcome-label">APAC SaaS extension</div></div>
+            <div class="outcome-pill"><div class="outcome-num">130+</div><div class="outcome-label">Dev teams self-serving</div></div>
+            <div class="outcome-pill"><div class="outcome-num">70+</div><div class="outcome-label">Business units unlocked</div></div>
+          </div>
+          <a href="https://sixthsense.rakuten.com/" target="_blank" class="mockup-link" style="margin-top:1.2rem">View Rakuten SixthSense (live product)</a>
+        </div>
+        <div class="case-mockup">
+          <div class="mockup-app">
+            <div class="app-bar">
+              <div class="app-dot r"></div><div class="app-dot y"></div><div class="app-dot g"></div>
+              <div class="app-title">sixthsense.rakuten.com / paas-console</div>
+            </div>
+            <div class="app-body">
+              <div class="rak-header">◆ Rakuten Platform · API-First Services</div>
+              <div class="rak-services">
+                <div class="rak-svc">
+                  <div class="rak-svc-name"><span class="rak-svc-status"></span>Compute</div>
+                  <div class="rak-svc-api">POST /api/v1/compute</div>
+                </div>
+                <div class="rak-svc">
+                  <div class="rak-svc-name"><span class="rak-svc-status"></span>Storage</div>
+                  <div class="rak-svc-api">POST /api/v1/storage</div>
+                </div>
+                <div class="rak-svc">
+                  <div class="rak-svc-name"><span class="rak-svc-status"></span>Observability</div>
+                  <div class="rak-svc-api">POST /api/v1/telemetry</div>
+                </div>
+                <div class="rak-svc">
+                  <div class="rak-svc-name"><span class="rak-svc-status"></span>Log Monitoring</div>
+                  <div class="rak-svc-api">POST /api/v1/logs</div>
+                </div>
+              </div>
+              <div class="rak-adoption">
+                <div class="rak-adoption-row"><span>Dev team adoption</span><span>130 / 130</span></div>
+                <div class="rak-adoption-bar"><div class="rak-adoption-fill" style="width:100%"></div></div>
+                <div class="rak-adoption-row" style="margin-top:0.5rem"><span>BU coverage</span><span>70+ units</span></div>
+                <div class="rak-adoption-bar"><div class="rak-adoption-fill" style="width:92%"></div></div>
+              </div>
+              <div class="rak-savings">
+                <span>PaaS savings · Annualized</span>
+                <strong>$17M</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 4: Clear B2B ERP integrations -->
+    <div class="case-card">
+      <div class="case-card-inner reverse">
+        <div class="case-content">
+          <div class="case-meta">
+            <span class="case-tag tag-clear">Clear</span>
+            <span class="case-year">2018–2019</span>
+          </div>
+          <h3>Plug-n-Play ERP Connectors for 1,500+ SMBs</h3>
+          <div class="case-role">Product Manager · B2B Financial Accounting · Bangalore</div>
+
+          <div class="case-section-label">The Problem</div>
+          <p class="case-text">Indian SMBs struggled with GST compliance and working capital because they used <strong>fragmented ERP systems</strong> — Tally, SAP, Zoho, Oracle. Manual reconciliation, invoice corrections, and vendor follow-ups added weeks to every filing cycle.</p>
+
+          <div class="case-section-label">The Bet</div>
+          <p class="case-text">Build <strong>plug-n-play API connectors</strong> that integrate with every major ERP with <strong>&gt;99% data ingestion accuracy</strong> — then layer automated invoice corrections and one-click vendor communication on top to slash friction.</p>
+
+          <div class="case-section-label">How I Drove It</div>
+          <p class="case-text">Prioritized ERPs by SMB market share. Standardized the integration contract to make onboarding a self-serve motion. Built automated invoice correction and vendor communication flows — reducing back-and-forth by an order of magnitude for finance teams.</p>
+
+          <div class="case-outcomes">
+            <div class="outcome-pill"><div class="outcome-num">1,500+</div><div class="outcome-label">SMBs onboarded</div></div>
+            <div class="outcome-pill"><div class="outcome-num">&gt;99%</div><div class="outcome-label">Data ingestion accuracy</div></div>
+            <div class="outcome-pill"><div class="outcome-num">One-click</div><div class="outcome-label">Vendor communication</div></div>
+            <div class="outcome-pill"><div class="outcome-num">Plug-n-play</div><div class="outcome-label">ERP integration model</div></div>
+          </div>
+          <a href="https://www.clear.in/ap-automation-software" target="_blank" class="mockup-link" style="margin-top:1.2rem">View Clear AP Automation (live product)</a>
+        </div>
+        <div class="case-mockup">
+          <div class="mockup-app">
+            <div class="app-bar">
+              <div class="app-dot r"></div><div class="app-dot y"></div><div class="app-dot g"></div>
+              <div class="app-title">clear.in · erp-connectors / admin</div>
+            </div>
+            <div class="app-body">
+              <div class="clr-header">◆ ERP Connectors · Live Integrations</div>
+              <div class="clr-connectors">
+                <div class="clr-erp"><div class="clr-erp-name">Tally</div><div class="clr-erp-status">● 99.8%</div></div>
+                <div class="clr-erp"><div class="clr-erp-name">SAP</div><div class="clr-erp-status">● 99.4%</div></div>
+                <div class="clr-erp"><div class="clr-erp-name">Zoho</div><div class="clr-erp-status">● 99.9%</div></div>
+                <div class="clr-erp"><div class="clr-erp-name">Oracle</div><div class="clr-erp-status">● 99.2%</div></div>
+                <div class="clr-erp"><div class="clr-erp-name">Microsoft</div><div class="clr-erp-status">● 99.6%</div></div>
+                <div class="clr-erp"><div class="clr-erp-name">Custom</div><div class="clr-erp-status">● 98.9%</div></div>
+              </div>
+              <div class="clr-flow">
+                <div class="clr-flow-title">Pipeline · Today's Snapshot</div>
+                <div class="clr-flow-metrics">
+                  <div class="clr-flow-metric"><div class="clr-flow-val">1,547</div><div class="clr-flow-lbl">SMBs Active</div></div>
+                  <div class="clr-flow-metric"><div class="clr-flow-val">42K</div><div class="clr-flow-lbl">Invoices/day</div></div>
+                  <div class="clr-flow-metric"><div class="clr-flow-val">1-click</div><div class="clr-flow-lbl">Vendor Comm</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2>What I bring to the table</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>Functional</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Product-Led Growth</span>
+        <span class="skill-tag">GTM Strategy</span>
+        <span class="skill-tag">Monetization & Pricing</span>
+        <span class="skill-tag">Retention Strategy</span>
+        <span class="skill-tag">Product Vision & OKRs</span>
+        <span class="skill-tag">Experimentation</span>
+        <span class="skill-tag">Team Management</span>
+        <span class="skill-tag">C-Suite Alignment</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Domain</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">Cloud & AI Products</span>
+        <span class="skill-tag">Enterprise Workflows</span>
+        <span class="skill-tag">CRM Automation</span>
+        <span class="skill-tag">Marketing Automation</span>
+        <span class="skill-tag">B2B SaaS / PaaS</span>
+        <span class="skill-tag">Partner Enablement (SI/ISV)</span>
+        <span class="skill-tag">Developer Relations</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Technical / AI</h4>
+      <div class="skill-tags">
+        <span class="skill-tag">AI Governance</span>
+        <span class="skill-tag">Model Evals</span>
+        <span class="skill-tag">APIs & SDKs</span>
+        <span class="skill-tag">MLOps & AIOps</span>
+        <span class="skill-tag">Agent Orchestration</span>
+        <span class="skill-tag">RAG Systems</span>
+        <span class="skill-tag">GenAI Product Design</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider"/>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-label">Career</div>
+  <h2>The journey</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-period">Jan 2023 – Present · Berlin, Germany</div>
+      <div class="timeline-role">Product Lead — Enterprise AI</div>
+      <div class="timeline-company">HelloFresh Group</div>
+      <div class="timeline-desc">Leading AI Agent initiatives that accelerate productivity across commercial functions. CDP enrichment → ML scoring → Agent orchestration for marketing campaigns. Launched internal AI Search (-85% getting-started time), Agentic CX (+45% CSAT), and a contextual work-surface AI app.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">Aug 2021 – Dec 2022 · Berlin, Germany</div>
+      <div class="timeline-role">Senior Product Manager — Platform</div>
+      <div class="timeline-company">GoTo Technologies</div>
+      <div class="timeline-desc">Unified commerce & pricing tier restructure across Remote Support + Collaboration: +$10M ARR. Marketplace integrations reduced churn by $12M/year. Multi-feed video & whiteboarding for weak networks: +30% rNPS. 7M+ enterprise users.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">Dec 2019 – May 2021 · Bangalore, India</div>
+      <div class="timeline-role">Product Manager II — Cloud Platform</div>
+      <div class="timeline-company">Rakuten</div>
+      <div class="timeline-desc">Transitioned platform from cost center to PaaS ($17M/yr savings) and extended as APAC SaaS ($2M ARR). Architected API-first Compute/Storage/Observability services. Led GTM & SI/ISV Partner Program. 130+ dev teams · 70+ BUs · 1.9B members.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">Mar 2018 – Dec 2019 · Bangalore, India</div>
+      <div class="timeline-role">Product Manager — B2B Financial SaaS</div>
+      <div class="timeline-company">Clear (ClearTax)</div>
+      <div class="timeline-desc">Scaled financial accounting products to 1,500+ SMBs. Built plug-n-play ERP connectors with &gt;99% ingestion accuracy. Automated invoice corrections and one-click vendor communication for GST compliance & working capital management.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">May 2015 – Mar 2018 · India & US</div>
+      <div class="timeline-role">Multiple PM Roles</div>
+      <div class="timeline-company">E-Commerce Scale-ups</div>
+      <div class="timeline-desc">Launched and scaled multiple B2C products delivering &gt;$3M revenue growth across versatile business models and TAMs in India and US.</div>
+    </div>
+    <div class="timeline-item" style="padding-bottom:0">
+      <div class="timeline-period">2010 – 2015 · 2012 – 2014</div>
+      <div class="timeline-role">Early Career · Education</div>
+      <div class="timeline-company">Strategy Consulting · Semiconductors · IIM Udaipur</div>
+      <div class="timeline-desc">Strategy Consulting & Semiconductors (Mumbai, Bangalore). Post-Graduate Diploma in Management, IIM Udaipur. B.E. Electrical & Electronics Engineering, R.V. College of Engineering.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Let's talk</div>
+    <h2>Building the next AI-native SaaS company?</h2>
+    <p>Open to <strong style="color:var(--text)">Senior PM, Head of Product, and VP of Product</strong> roles in Enterprise AI, B2B SaaS, and platform companies. Based in Brandenburg, Germany — open to Berlin and remote.</p>
+    <div class="contact-links">
+      <a href="mailto:aditya.raghunath@iimu.ac.in" class="contact-pill primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+        aditya.raghunath@iimu.ac.in
+      </a>
+      <a href="https://www.linkedin.com/in/aditya-raghunath-79949b23/" target="_blank" class="contact-pill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="tel:+4917679042378" class="contact-pill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.17 12 19.79 19.79 0 0 1 1.1 3.38 2 2 0 0 1 3.08 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+        +49 176 7904 2378
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 Aditya Raghunath · Enterprise AI · SaaS · Commercial Strategy · Brandenburg, Germany
+</footer>
+
+</body>
+</html>
